@@ -1,17 +1,13 @@
 .eds-banner {
-    /* background-color: #0073aa; */
+    background-color: blue;
     padding: 20px;
     color: #ffffff;
 }
 
-.eds-banner h2 {
-    margin: 0 0 15px;
+.eds-banner p {
+    font-size: 2rem;
 }
 
 .eds-banner img {
     max-width: 100%;
-}
-
-.test-class {
-    background-color: blue;
 }
