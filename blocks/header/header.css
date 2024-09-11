@@ -178,7 +178,8 @@ header nav .nav-sections ul > li > ul {
 }
 
 header nav .nav-sections ul > li > ul > li {
-  font-weight: 400;
+  font-weight: 500;
+  color: var(--background-color);
 }
 
 @media (width >= 900px) {

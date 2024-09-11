@@ -1,6 +1,13 @@
 import { createOptimizedPicture } from '../../scripts/aem.js';
+import { fetchPlaceholders, getMetadata } from '../../scripts/aem.js';
 
-export default function decorate(block) {
+export default async function decorate(block) {
+  const locale = getMetadata("locale");
+  // fetch placeholders from the 'en' folder
+  const placeholders = await fetchPlaceholders('en');
+  // retrieve the value for key 'foo'
+  const { clickHereForMore } = placeholders;
+
   /* change to ul, li */
   const ul = document.createElement('ul');
   [...block.children].forEach((row) => {

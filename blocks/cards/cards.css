@@ -25,3 +25,11 @@
   aspect-ratio: 4 / 3;
   object-fit: cover;
 }
+
+.cards-container .section  {
+  background-color: var(--background-color);
+}
+
+.cards-container .default-content-wrapper  {
+  color: var(--background-color);
+}
