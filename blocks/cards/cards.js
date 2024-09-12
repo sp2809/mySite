@@ -3,23 +3,63 @@ import { fetchPlaceholders, getMetadata } from '../../scripts/aem.js';
 
 export default async function decorate(block) {
   const locale = getMetadata("locale");
-  // fetch placeholders from the 'en' folder
+  
+  // Fetch placeholders
   const placeholders = await fetchPlaceholders();
-  // retrieve the value for key 'foo'
+  
+  // Retrieve the value for key 'clickHereForMore'
   const { clickHereForMore } = placeholders;
 
-  /* change to ul, li */
+  /* Change to ul, li */
   const ul = document.createElement('ul');
   [...block.children].forEach((row) => {
     const li = document.createElement('li');
     while (row.firstElementChild) li.append(row.firstElementChild);
+    
     [...li.children].forEach((div) => {
-      if (div.children.length === 1 && div.querySelector('picture')) div.className = 'cards-card-image';
-      else div.className = 'cards-card-body';
+      if (div.children.length === 1 && div.querySelector('picture')) {
+        div.className = 'cards-card-image';
+      } else {
+        div.className = 'cards-card-body';
+
+        // Find the second <p> element and hide it initially
+        const paragraphs = div.querySelectorAll('p');
+        if (paragraphs.length > 1) {
+          const secondParagraph = paragraphs[1];
+          secondParagraph.style.display = 'none'; // Hide second <p> initially
+          
+          // Create a clickable placeholder link
+          const placeholderLink = document.createElement('a');
+          placeholderLink.innerText = clickHereForMore || 'Click here for more';
+          placeholderLink.href = '#';
+          placeholderLink.style.cursor = 'pointer';
+          
+          // Insert the link before the second <p> element
+          secondParagraph.before(placeholderLink);
+          
+          // Add click event to the placeholder link to toggle the second paragraph only for that specific card
+          placeholderLink.addEventListener('click', (e) => {
+            e.preventDefault(); // Prevent the default anchor behavior
+            
+            // Toggle the display of the second paragraph only for the clicked card
+            if (secondParagraph.style.display === 'none') {
+              secondParagraph.style.display = 'block';
+            } else {
+              secondParagraph.style.display = 'none';
+            }
+          });
+        }
+      }
     });
     ul.append(li);
   });
-  ul.querySelectorAll('picture > img').forEach((img) => img.closest('picture').replaceWith(createOptimizedPicture(img.src, img.alt, false, [{ width: '750' }])));
+
+  // Replace images with optimized pictures
+  ul.querySelectorAll('picture > img').forEach((img) => 
+    img.closest('picture').replaceWith(createOptimizedPicture(img.src, img.alt, false, [{ width: '750' }]))
+  );
+
+  // Clear the block content and append the new structure
   block.textContent = '';
   block.append(ul);
 }
