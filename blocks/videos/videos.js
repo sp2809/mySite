@@ -11,7 +11,6 @@
 //   iframe.height = '315';
 //   iframe.frameBorder = '0';
 //   iframe.allowFullscreen = true;
-  
 //   videoLink.parentNode.replaceChild(iframe, videoLink); // Replace link with iframe
 // }
 
