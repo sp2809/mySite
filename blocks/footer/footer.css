@@ -21,7 +21,7 @@ footer .footer p {
 }
 
 footer a:any-link {
-  color: rgb(0, 0, 105);
+  color: #000069;
   text-decoration: none;
   word-break: break-word;
 }
