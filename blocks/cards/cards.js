@@ -1,13 +1,9 @@
-import { createOptimizedPicture } from '../../scripts/aem.js';
-import { fetchPlaceholders, getMetadata } from '../../scripts/aem.js';
+import { createOptimizedPicture, fetchPlaceholders } from '../../scripts/aem.js';
 
 export default async function decorate(block) {
-  const locale = getMetadata("locale");
   
-  // Fetch placeholders
-  const placeholders = await fetchPlaceholders();
+  const placeholders = await fetchPlaceholders('');
   
-  // Retrieve the value for key 'clickHereForMore'
   const { clickHereForMore } = placeholders;
 
   /* Change to ul, li */
@@ -22,26 +18,21 @@ export default async function decorate(block) {
       } else {
         div.className = 'cards-card-body';
 
-        // Find the second <p> element and hide it initially
         const paragraphs = div.querySelectorAll('p');
         if (paragraphs.length > 1) {
           const secondParagraph = paragraphs[1];
           secondParagraph.style.display = 'none'; // Hide second <p> initially
           
-          // Create a clickable placeholder link
           const placeholderLink = document.createElement('a');
           placeholderLink.innerText = clickHereForMore || 'Click here for more';
           placeholderLink.href = '#';
           placeholderLink.style.cursor = 'pointer';
           
-          // Insert the link before the second <p> element
           secondParagraph.before(placeholderLink);
           
-          // Add click event to the placeholder link to toggle the second paragraph only for that specific card
           placeholderLink.addEventListener('click', (e) => {
             e.preventDefault(); // Prevent the default anchor behavior
             
-            // Toggle the display of the second paragraph only for the clicked card
             if (secondParagraph.style.display === 'none') {
               secondParagraph.style.display = 'block';
             } else {
