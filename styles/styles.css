@@ -286,3 +286,13 @@ main .my-section .default-content-wrapper {
   color: var(--background-color);
 }
 
+main .terms .default-content-wrapper {
+  background-color: lightgoldenrodyellow;
+  color: var(--background-color);
+}
+
+.icon-list {
+  width: 24px;
+  height: 16px;
+  margin-right: 4px;
+}

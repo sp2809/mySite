@@ -33,3 +33,23 @@ if (videoLink) {
     videoLink.parentNode.replaceChild(iframe, videoLink);
   }
 }
+
+//https://x.com/Adobe/status/1772777428928061597/video/1
+
+const videoLink2 = document.querySelector('a[href*="youtube.com/watch"]');
+
+if (videoLink2) {
+  const urlParams = new URLSearchParams(new URL(videoLink2.href).search);
+  const videoId = urlParams.get('v'); // Extract YouTube video ID
+  if (videoId) {
+    const iframe = document.createElement('iframe');
+    iframe.src = `https://www.youtube.com/embed/${videoId}`;
+    iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+    iframe.width = '560';
+    iframe.height = '315';
+    iframe.frameBorder = '0';
+    iframe.allowFullscreen = true;
+
+    videoLink2.parentNode.replaceChild(iframe, videoLink2);
+  }
+}
