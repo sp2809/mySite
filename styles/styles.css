@@ -296,3 +296,7 @@ main .terms .default-content-wrapper {
   height: 16px;
   margin-right: 4px;
 }
+
+main .thank-you {
+  text-align: center;
+}
