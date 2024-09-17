@@ -1,7 +1,7 @@
 import createField from './form-fields.js';
 
 async function createForm(formHref, submitHref) {
-  console.log('formHref', formHref)
+  console.log('formHref', formHref);
   const { pathname } = new URL(formHref);
   const resp = await fetch(pathname);
   const json = await resp.json();
