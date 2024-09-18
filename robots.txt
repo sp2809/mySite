@@ -1,0 +1,4 @@
+user-agent: *
+allow: /
+
+sitemap: https://main--myfirstsite--sp2809.hlx.live/sitemap.xml
