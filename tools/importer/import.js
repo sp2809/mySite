@@ -10,7 +10,7 @@
  * governing permissions and limitations under the License.
  */
 /* global WebImporter */
-/* eslint-disable no-console, class-methods-use-this */
+
 
 export default {
     /**
@@ -23,12 +23,12 @@ export default {
      * @returns {HTMLElement} The root element to be transformed
      */
     transformDOM: ({
-      // eslint-disable-next-line no-unused-vars
+
       document, url, html, params,
     }) => {
       // define the main element: the one that will be transformed to Markdown
       const main = document.body;
-  
+
       // attempt to remove non-content elements
       WebImporter.DOMUtils.remove(main, [
         'header',
@@ -40,15 +40,15 @@ export default {
         'iframe',
         'noscript',
       ]);
-  
+
       WebImporter.rules.createMetadata(main, document);
       WebImporter.rules.transformBackgroundImages(main, document);
       WebImporter.rules.adjustImageUrls(main, url, params.originalURL);
       WebImporter.rules.convertIcons(main, document);
-  
+
       return main;
     },
-  
+
     /**
      * Return a path that describes the document being transformed (file name, nesting...).
      * The path is then used to create the corresponding Word document.
@@ -59,7 +59,7 @@ export default {
      * @return {string} The path
      */
     generateDocumentPath: ({
-      // eslint-disable-next-line no-unused-vars
+
       document, url, html, params,
     }) => {
       let p = new URL(url).pathname;
