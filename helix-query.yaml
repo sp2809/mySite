@@ -18,10 +18,10 @@ indices:
         select: head > meta[property="og:title"]
         value: |
           attribute(el, 'content')
-      date:
-        select: head > meta[name="publication-date"]
-        value: |
-          dateValue(attribute(el, 'content'), 'MM-DD-YYYY')
+      # date:
+      #   select: head > meta[name="publication-date"]
+      #   value: |
+      #     dateValue(attribute(el, 'content'), 'MM-DD-YYYY')
       image:
         select: head > meta[property="og:image"]
         value: |
@@ -38,7 +38,7 @@ indices:
       #   select: head > meta[name="topics"]
       #   value: |
       #     attribute(el, 'content')
-      lastModified:
-        select: none
-        value: |
-          parseTimestamp(headers['last-modified'], 'ddd, DD MMM YYYY hh:mm:ss GMT')
+      # lastModified:
+      #   select: none
+      #   value: |
+      #     parseTimestamp(headers['last-modified'], 'ddd, DD MMM YYYY hh:mm:ss GMT')
