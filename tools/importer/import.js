@@ -31,12 +31,12 @@ export default {
 
       // attempt to remove non-content elements
       WebImporter.DOMUtils.remove(main, [
-        'header',
-        '.header',
-        'nav',
-        '.nav',
-        'footer',
-        '.footer',
+        // 'header',
+        // '.header',
+        // 'nav',
+        // '.nav',
+        // 'footer',
+        // '.footer',
         'iframe',
         'noscript',
       ]);
